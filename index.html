@@ -3,19 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unwind & Relax</title>
+    <title>Tranquil Retreat</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
+    <div id="background"></div>
     <div class="container">
-        <h1>Welcome Back</h1>
+        <h1>Welcome to Your Peaceful Space</h1>
         <div class="content">
-            <div class="breathe-circle"></div>
-            <p class="message">Breathe in... and out...</p>
-            <div class="nature-sounds">
-                <button id="rainSound">🌧️ Rain</button>
-                <button id="forestSound">🌳 Forest</button>
-                <button id="wavesSound">🌊 Waves</button>
+            <div class="breathe-container">
+                <div class="breathe-circle"></div>
+                <p class="breathe-text">Breathe</p>
+            </div>
+            <div class="mood-selector">
+                <p>How are you feeling?</p>
+                <div class="mood-buttons">
+                    <button class="mood" data-mood="calm">😌 Calm</button>
+                    <button class="mood" data-mood="stressed">😓 Stressed</button>
+                    <button class="mood" data-mood="tired">😴 Tired</button>
+                </div>
+            </div>
+            <div class="ambient-sounds">
+                <p>Choose your ambient sound:</p>
+                <div class="sound-buttons">
+                    <button id="rainSound" class="sound-btn">🌧️ Rain</button>
+                    <button id="forestSound" class="sound-btn">🌳 Forest</button>
+                    <button id="wavesSound" class="sound-btn">🌊 Waves</button>
+                </div>
+            </div>
+            <div class="quote-container">
+                <p id="quote"></p>
+                <button id="newQuote">New Quote</button>
             </div>
         </div>
     </div>

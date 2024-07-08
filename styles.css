@@ -1,54 +1,79 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a2e;
-    color: #e0e0e0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body, html {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #e0e0e0;
     overflow: hidden;
 }
 
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 .container {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
 }
 
 h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
+    text-align: center;
     opacity: 0;
     animation: fadeIn 2s ease-in forwards;
 }
 
 .content {
-    background-color: #16213e;
+    background-color: rgba(22, 33, 62, 0.8);
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 2s ease-in 0.5s forwards;
+}
+
+.breathe-container {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .breathe-circle {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1rem;
     background: radial-gradient(circle at 30% 30%, #4a90e2, #1a1a2e);
     animation: breathe 5s infinite ease-in-out;
 }
 
-.message {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeIn 2s ease-in 1s forwards;
+.breathe-text {
+    font-size: 1.2rem;
+    opacity: 0.8;
 }
 
-.nature-sounds {
+.mood-selector, .ambient-sounds, .quote-container {
+    margin-bottom: 2rem;
+}
+
+.mood-buttons, .sound-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 button {
@@ -58,21 +83,72 @@ button {
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    opacity: 0;
-    animation: fadeIn 2s ease-in 2s forwards;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 button:hover {
     background-color: #16213e;
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#quote {
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 @keyframes breathe {
-    0%, 100% { transform: scale(0.9); }
-    50% { transform: scale(1.1); }
+    0%, 100% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
 }
 
 @keyframes fadeIn {
     to { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mood-buttons button, .sound-buttons button {
+    animation: float 3s ease-in-out infinite;
+}
+
+.mood-buttons button:nth-child(2), .sound-buttons button:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.mood-buttons button:nth-child(3), .sound-buttons button:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Mood-based themes */
+body.calm {
+    background-color: #1a4a6e;
+}
+
+body.stressed {
+    background-color: #6e1a1a;
+}
+
+body.tired {
+    background-color: #3d1a6e;
+}
+
+/* Mood button styles */
+.mood {
+    transition: all 0.3s ease;
+}
+
+.mood.active {
+    background-color: #4a90e2;
+    transform: scale(1.1);
 }
